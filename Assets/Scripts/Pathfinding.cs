@@ -63,7 +63,7 @@ public class Pathfinding
             _openList.Remove(currentCell);
             _closedList.Add(currentCell);
 
-            foreach (var neighbourCell in GetNeighbourList(currentCell))
+            foreach (Cell neighbourCell in GetNeighbourList(currentCell))
             {
                 if (_closedList.Contains(neighbourCell))
                     continue;
