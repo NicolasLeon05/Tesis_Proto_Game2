@@ -60,10 +60,15 @@ public class MyGrid : MonoBehaviour
                 GameObject newCell = Instantiate(_cellPrefab, transform);
                 newCell.transform.localScale = Vector3.one * scaleFactor;
 
-                Vector3 position = new Vector3(x, 0, 0) * _cellsSize +
-                    new Vector3(0, 0, z) * _cellsSize * VERTICAL_OFFSET_MULTIPLIER +
-                    ((z % 2 == 1) ? Vector3.right * _cellsSize * HORIZONTAL_OFFSET_MULTIPLIER : Vector3.zero);
+                // Vector3 position = new Vector3(x, 0, 0) * _cellsSize +
+                //     new Vector3(0, 0, z) * _cellsSize * VERTICAL_OFFSET_MULTIPLIER +
+                //     ((z % 2 == 1) ? Vector3.right * _cellsSize * HORIZONTAL_OFFSET_MULTIPLIER : Vector3.zero);
+                // newCell.transform.localPosition = position;
+
+                Vector3 position = new Vector3(x, 0, 0) * newCell.transform.localScale.x + new Vector3(0, 0, z) * newCell.transform.localScale.z;
+
                 newCell.transform.localPosition = position;
+                newCell.transform.localScale *= 0.9f;
 
                 Cell cell = newCell.GetComponent<Cell>();
                 if (cell == null)

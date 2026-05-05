@@ -129,26 +129,26 @@ public class Pathfinding
         if (y + 1 < _grid.Height)
             neighbourList.Add(_grid.GetCell(x, y + 1));
 
-        if (oddRow)
-        {
-            // Up Right
-            if (y + 1 < _grid.Height && x + 1 < _grid.Width)
-                neighbourList.Add(_grid.GetCell(x + 1, y + 1));
+        //if (oddRow)
+        //{
+        //    // Up Right
+        //    if (y + 1 < _grid.Height && x + 1 < _grid.Width)
+        //        neighbourList.Add(_grid.GetCell(x + 1, y + 1));
 
-            // Down Right
-            if (y - 1 >= 0 && x + 1 < _grid.Width)
-                neighbourList.Add(_grid.GetCell(x + 1, y - 1));
-        }
-        else
-        {
-            // Up Left
-            if (y + 1 < _grid.Height && x - 1 >= 0)
-                neighbourList.Add(_grid.GetCell(x - 1, y + 1));
+        //    // Down Right
+        //    if (y - 1 >= 0 && x + 1 < _grid.Width)
+        //        neighbourList.Add(_grid.GetCell(x + 1, y - 1));
+        //}
+        //else
+        //{
+        //    // Up Left
+        //    if (y + 1 < _grid.Height && x - 1 >= 0)
+        //        neighbourList.Add(_grid.GetCell(x - 1, y + 1));
 
-            // Down Left
-            if (y - 1 >= 0 && x - 1 >= 0)
-                neighbourList.Add(_grid.GetCell(x - 1, y - 1));
-        }
+        //    // Down Left
+        //    if (y - 1 >= 0 && x - 1 >= 0)
+        //        neighbourList.Add(_grid.GetCell(x - 1, y - 1));
+        //}
 
         return neighbourList;
     }

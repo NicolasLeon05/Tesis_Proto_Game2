@@ -8,7 +8,6 @@ public class Cell : MonoBehaviour
     [SerializeField] private int _height;
 
     [Header("Visual")]
-    [SerializeField] private Transform _visual;
     [SerializeField] private float _heightStep = 1f;
 
     [SerializeField] private Vector2Int _coordinates;
@@ -47,9 +46,6 @@ public class Cell : MonoBehaviour
 
     private void ApplyHeight()
     {
-        if (_visual != null)
-        {
-            _visual.localPosition = new Vector3(0, WorldHeight, 0);
-        }
+        transform.localPosition = new Vector3(transform.localPosition.x, WorldHeight, transform.localPosition.z);
     }
 }
