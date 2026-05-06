@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _currentCell = _grid.GetCell(0, 0);
-        transform.position = GetCellWorldPosition(_currentCell);
+        transform.position = GetStandPosition(_currentCell.GetWorldTopPosition());
     }
 
     private void Update()
@@ -43,9 +43,7 @@ public class PlayerController : MonoBehaviour
                 Cell clickedCell = hit.collider.GetComponentInParent<Cell>();
 
                 if (clickedCell != null)
-                {
                     RequestPath(clickedCell);
-                }
             }
         }
     }
@@ -85,7 +83,7 @@ public class PlayerController : MonoBehaviour
                 targetCell.transform.position.z
             );
 
-            Vector3 finalTarget = GetCellWorldPosition(targetCell);
+            Vector3 finalTarget = GetStandPosition(targetCell.GetWorldTopPosition());
             float elapsed = 0f;
             while (elapsed < _timeToMoveCells)
             {
@@ -121,15 +119,8 @@ public class PlayerController : MonoBehaviour
         _isMoving = false;
     }
 
-    private Vector3 GetCellWorldPosition(Cell cell)
+    private Vector3 GetStandPosition(Vector3 basePostion)
     {
-        Renderer rend = cell.GetComponentInChildren<Renderer>();
-        float topY = rend.bounds.max.y;
-
-        return new Vector3(
-            cell.transform.position.x,
-            topY + 0.5f,
-            cell.transform.position.z
-        );
+        return basePostion + new Vector3 (0, transform.localScale.y * 0.5f, 0);
     }
 }

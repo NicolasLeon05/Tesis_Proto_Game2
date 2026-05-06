@@ -23,6 +23,8 @@ public class Cell : MonoBehaviour
     public float WorldHeight => _height * _heightStep;
     public Vector2Int Coordinates => _coordinates;
 
+
+
     public void SetCoordinates(Vector2Int coordinates)
     {
         _coordinates = coordinates;
@@ -47,5 +49,10 @@ public class Cell : MonoBehaviour
     private void ApplyHeight()
     {
         transform.localPosition = new Vector3(transform.localPosition.x, WorldHeight, transform.localPosition.z);
+    }
+
+    public Vector3 GetWorldTopPosition()
+    {
+        return transform.position + new Vector3(0, transform.lossyScale.y, 0);
     }
 }
