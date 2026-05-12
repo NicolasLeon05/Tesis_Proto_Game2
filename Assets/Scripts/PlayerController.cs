@@ -83,7 +83,18 @@ public class PlayerController : MonoBehaviour
                 targetCell.transform.position.z
             );
 
-            Vector3 finalTarget = GetStandPosition(targetCell.GetWorldTopPosition());
+            Vector3 finalTarget;
+            if (targetCell.Height != _currentCell.Height)
+            {
+                finalTarget = GetStandPosition(targetCell.GetWorldTopPosition());
+            }
+            else
+            {
+                finalTarget = targetCell.transform.position;
+                finalTarget.y = transform.position.y;
+            }
+
+
             float elapsed = 0f;
             while (elapsed < _timeToMoveCells)
             {
@@ -121,6 +132,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetStandPosition(Vector3 basePostion)
     {
-        return basePostion + new Vector3 (0, transform.localScale.y * 0.5f, 0);
+        return basePostion + new Vector3(0, transform.localScale.y * 0.5f, 0);
     }
 }

@@ -53,6 +53,13 @@ public class Cell : MonoBehaviour
 
     public Vector3 GetWorldTopPosition()
     {
-        return transform.position + new Vector3(0, transform.lossyScale.y, 0);
+        Renderer rend = GetComponentInChildren<Renderer>();
+        float topY = rend.bounds.max.y;
+
+        return new Vector3(
+            transform.position.x,
+            topY + transform.localScale.y * 0.5f,
+            transform.position.z
+        );
     }
 }
